@@ -66,6 +66,14 @@ export class ComposerPluginRegistration {
     };
   }
 
+  public on(eventName: string, listener: (...args) => any) {
+    console.log('Registering plugin event listener for: ', eventName);
+    if (!this.loader.listeners[eventName]) {
+      this.loader.listeners[eventName] = [];
+    }
+    this.loader.listeners[eventName].push(listener);
+  }
+
   /**************************************************************************************
    * Runtime Templates
    *************************************************************************************/

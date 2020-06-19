@@ -19,6 +19,7 @@ export class PluginLoader {
   public loginUri: string;
 
   public extensions: ExtensionCollection;
+  public listeners: { [event: string]: ((...args: any[]) => void)[] };
 
   constructor() {
     // load any plugins present in the default folder
@@ -36,6 +37,7 @@ export class PluginLoader {
       baseTemplates: [],
     };
     this._passport = passport;
+    this.listeners = {};
   }
 
   public get passport() {
@@ -104,6 +106,7 @@ export class PluginLoader {
 
   public async loadPluginsFromFolder(dir: string) {
     const plugins = await glob('*/package.json', { cwd: dir, dot: true });
+    console.log(plugins);
     for (const p in plugins) {
       await this.loadPluginFromFile(path.join(dir, plugins[p]));
     }

@@ -1,0 +1,12 @@
+{
+  "name": "@bfc/plugin-pva-publish",
+  "version": "1.0.0",
+  "extendsComposer": true,
+  "description": "Publish bot to PVA (Preview)",
+  "main": "index.js",
+  "dependencies": {
+    "msal": "^1.3.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}
