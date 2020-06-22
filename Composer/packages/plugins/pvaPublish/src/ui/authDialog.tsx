@@ -1,11 +1,10 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, FC } from 'react';
+import * as React from 'react';
 
 import { root } from './styles';
 import { AuthClient } from './authClient';
 
-export const PVADialog: React.FC = () => {
+export const PVADialog: FC = () => {
   const [token, setToken] = useState('');
   const login = useCallback(async () => {
     const accessToken = await AuthClient.getInstance().getToken();
@@ -13,7 +12,7 @@ export const PVADialog: React.FC = () => {
   }, []);
 
   return (
-    <div css={root}>
+    <div style={root}>
       <h1>PVA Auth</h1>
       {token && <p style={{ overflowX: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>token: {token}</p>}
       <button onClick={login}>Login</button>

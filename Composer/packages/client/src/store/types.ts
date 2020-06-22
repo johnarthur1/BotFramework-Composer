@@ -68,6 +68,7 @@ export interface PublishType {
     rollback: boolean;
     status: boolean;
   };
+  html?: string;
 }
 
 export interface PublishTarget {

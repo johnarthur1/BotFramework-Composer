@@ -23,6 +23,15 @@ interface CreatePublishTargetProps {
   updateSettings: (name: string, type: string, configuration: string) => Promise<void>;
 }
 
+function returnIframeWithHTML(html: string) {
+  const iframe = React.createElement('iframe');
+  //iframe.ref.
+  // if (iframe.contentWindow) {
+  //   iframe.contentWindow.document.body.innerHTML = html;
+  // }
+  return iframe;
+}
+
 const CreatePublishTarget: React.FC<CreatePublishTargetProps> = (props) => {
   const [targetType, setTargetType] = useState<string | undefined>(props.current?.type);
   const [name, setName] = useState(props.current ? props.current.name : '');
@@ -65,6 +74,10 @@ const CreatePublishTarget: React.FC<CreatePublishTargetProps> = (props) => {
     return targetType ? props.types.find((t) => t.name === targetType)?.schema : undefined;
   }, [props.targets, targetType]);
 
+  const html: string | undefined = useMemo(() => {
+    return targetType ? props.types.find((t) => t.name === targetType)?.html : '';
+  }, [props.targets, targetType]);
+
   const updateName = (e, newName) => {
     setErrorMsg('');
     setName(newName);
@@ -104,6 +117,11 @@ const CreatePublishTarget: React.FC<CreatePublishTargetProps> = (props) => {
           onChange={updateType}
         />
         {instructions && <p>{instructions}</p>}
+        {
+          html && document.createElement('h1').appendChild(document.createTextNode('hey'))
+          //html && returnIframeWithHTML(html)
+          /** somehow get a ref of this iframe, and then use <iframeDOMElement>.contentWindow.document.body.innerHTML = html */
+        }
         <div css={label}>{formatMessage('Publish Configuration')}</div>
         <JsonEditor key={targetType} height={200} schema={schema} value={config} onChange={updateConfig} />
         <button hidden disabled={isDisable()} type="submit" />

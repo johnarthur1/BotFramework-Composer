@@ -21,7 +21,7 @@ export const PublishController = {
       Object.values(pluginLoader.extensions.publish)
         .filter((extension) => extension.plugin.name !== defaultPublishConfig.type)
         .map((extension) => {
-          const { plugin, methods, schema, instructions } = extension;
+          const { plugin, methods, schema, instructions, html } = extension;
 
           return {
             name: plugin.name,
@@ -34,6 +34,7 @@ export const PublishController = {
               status: typeof methods.getStatus === 'function',
               rollback: typeof methods.rollback === 'function',
             },
+            html,
           };
         })
     );

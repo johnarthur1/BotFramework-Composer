@@ -75,6 +75,7 @@ export interface ExtensionCollection {
       instructions?: string;
       /** (Optional) Schema for publishing configuration. */
       schema?: JSONSchema7;
+      html?: string;
     };
   };
   authentication: {

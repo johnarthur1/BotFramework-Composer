@@ -1,12 +1,22 @@
 {
   "name": "@bfc/plugin-pva-publish",
   "version": "1.0.0",
+  "scripts": {
+    "build:ui": "webpack",
+    "build:node": "tsc --project tsconfig.node.json"
+  },
   "extendsComposer": true,
   "description": "Publish bot to PVA (Preview)",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "msal": "^1.3.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "html-webpack-inline-source-plugin": "^1.0.0-beta.2",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }
