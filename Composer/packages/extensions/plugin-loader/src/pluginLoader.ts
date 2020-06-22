@@ -69,7 +69,9 @@ export class PluginLoader {
   }
 
   public async loadPlugin(name: string, description: string, thisPlugin: any) {
+    console.log('loading plugin: ', name);
     const pluginRegistration = new ComposerPluginRegistration(this, name, description);
+    console.log(thisPlugin.default);
     if (typeof thisPlugin.default === 'function') {
       // the module exported just an init function
       thisPlugin.default.call(null, pluginRegistration);

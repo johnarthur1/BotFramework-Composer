@@ -426,6 +426,7 @@ export default async (composer: ComposerPluginRegistration): Promise<void> => {
   await composer.addPublishMethod(publisher);
 
   // register the bundled c# runtime used by the local publisher with the eject feature
+  console.log('adding runtime template from local publish');
   composer.addRuntimeTemplate({
     key: 'azurewebapp',
     name: 'C#',
