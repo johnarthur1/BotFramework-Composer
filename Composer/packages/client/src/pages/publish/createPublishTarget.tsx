@@ -108,9 +108,13 @@ const CreatePublishTarget: React.FC<CreatePublishTargetProps> = (props) => {
           onChange={updateType}
         />
         {instructions && <p>{instructions}</p>}
-        {html && <iframe srcDoc={html}></iframe>}
-        <div css={label}>{formatMessage('Publish Configuration')}</div>
-        <JsonEditor key={targetType} height={200} schema={schema} value={config} onChange={updateConfig} />
+        {html && <iframe srcDoc={html} height={200} width={402}></iframe>}
+        {schema && (
+          <Fragment>
+            <div css={label}>{formatMessage('Publish Configuration')}</div>
+            <JsonEditor key={targetType} height={200} schema={schema} value={config} onChange={updateConfig} />
+          </Fragment>
+        )}
         <button hidden disabled={isDisable()} type="submit" />
       </form>
       <DialogFooter>

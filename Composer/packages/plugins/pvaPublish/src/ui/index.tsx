@@ -4,4 +4,3 @@ import { render } from 'react-dom';
 import { PVADialog } from './authDialog';
 
 render(<PVADialog />, document.body);
-console.log('rendered');
