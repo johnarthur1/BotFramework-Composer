@@ -2,7 +2,7 @@ import { join } from 'path';
 import { readFileSync } from 'fs';
 
 function getReactHTML(): string {
-  const html = readFileSync(join(__dirname, 'bundle.js')).toString();
+  const html = readFileSync(join(__dirname, 'index.html')).toString();
   return html;
 }
 
