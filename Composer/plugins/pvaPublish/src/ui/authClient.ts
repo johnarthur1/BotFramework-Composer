@@ -1,8 +1,7 @@
 import { UserAgentApplication } from 'msal';
 
 const loginRequest = {
-  scopes: ['AppCatalog.ReadWrite.All', 'Application.Read.All', 'Organization.Read.All', 'User.Read.All'],
-  //scopes: ['user.read'],
+  scopes: ['96ff4394-9197-43aa-b393-6a41652e21f8/.default'],
 };
 
 let instance: AuthClient;
@@ -12,8 +11,8 @@ export class AuthClient {
     this.msalInstance = new UserAgentApplication({
       auth: {
         authority: 'https://login.microsoftonline.com/organizations/',
-        clientId: '6de30efc-46c2-46b1-8999-19b8bb31d242',
-        redirectUri: 'http://localhost:3000/oauth',
+        clientId: 'ce48853e-0605-4f77-8746-d70ac63cc6bc',
+        redirectUri: 'composer://oauth',
       },
     });
   }
